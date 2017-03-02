@@ -1,0 +1,144 @@
+</html>
+<html>
+<head>
+	<title></title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<style>
+	.alert {
+		padding: 20px;
+		background-color: #f44336;
+		color: white;
+		opacity: 1;
+		transition: opacity 0.6s;
+		margin-bottom: 15px;
+	}
+
+	.alert.success {background-color: #4CAF50;}
+	.alert.info {background-color: #2196F3;}
+	.alert.warning {background-color: #ff9800;}
+
+	.closebtn {
+		margin-left: 15px;
+		color: white;
+		font-weight: bold;
+		float: right;
+		font-size: 22px;
+		line-height: 20px;
+		cursor: pointer;
+		transition: 0.3s;
+	}
+
+	.closebtn:hover {
+		color: black;
+	}
+	</style>
+
+</head>
+<body>
+	<%if(err){%>
+		<div class="alert alert.warning" >
+			<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+			<strong>Error!</strong> <%= err%>
+		</div>
+		<%}%>
+		<%if(succ){%>
+			<div class="alert success" >
+				<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+				<strong>Success!</strong> <%=succ%>
+			</div>
+			<%}%>
+			<nav class="navbar navbar-inverse" height ="50">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<img src = <%=src%> class="img-circle" width="200" height="150"><a class="navbar-brand" href="#">add Projects</a>
+					</div>
+				</div>
+				<div class="container-fluid">
+					<ul class="nav navbar-nav">
+						<li><a href="/profile">Home</a></li>
+						<li><a href="/myPortfolio">My Portfolio</a></li>
+						<li><a href="/addProjects">Add Projects</a></li>
+					</ul>
+				</div>
+				<nav class="navbar navbar-inverse" height ="50">
+					<div class="container-fluid">
+						<ul class="nav navbar-nav">
+							<li><a href='/addProjects'>Upload Project</a></li>
+							<li><a href='/addProjects_Screen'>Upload ScreenShot</a></li>
+						</ul>
+					</div>
+				</nav>
+			</nav>
+
+
+			<% if(center){%>
+				<div class="container_fluid">
+					<center>Have not a portfolio yet ?!<center>
+						<center><%=center%></center>
+					</center>
+				</div>
+				<%}%>
+
+				<% if(state == "project"){%>
+					<div class="col-xs-12 col-md-4">
+						<div class="form-container">
+							<h3 style="margin-bottom:40px;">Add New Project</h3>
+							<form class="form"  method="POST" action="/createProject_link">
+								<% if(center){%>
+									<div class="form-group">
+										<label for="name">Your Name</label>
+										<input name = "name" type="text" class="form-control" id="name" placeholder="Name">
+									</div>
+									<div class="form-group">
+										<label for="des">Your Portfolio Description</label>
+										<input name = "description" type="text" class="form-control" id="des" placeholder="Description">
+									</div>
+
+									<%}%>
+									<div class="form-group">
+										<label for="InputTitle">Title</label>
+										<input name = "title" type="text" class="form-control" id="InputTitle" placeholder="Title">
+									</div>
+									<div class="form-group">
+										<label for="InputLink">Link</label>
+										<input name = "URL" type="url" class="form-control" id="InputLink" placeholder="Link">
+									</div>
+									<button type="submit" class="btn btn-default">Upload</button>
+								</form>
+							</div>
+						</div>
+						<%}else{%>
+							<div class="col-xs-12 col-md-4">
+								<div class="form-container">
+									<h3 style="margin-bottom:40px;">Add New Project</h3>
+									<form class="form" enctype="multipart/form-data" method="POST" action="/createProject_screen">
+										<% if(center){%>
+											<div class="form-group">
+												<label for="name">Your Name</label>
+												<input name = "name" type="text" class="form-control" id="name" placeholder="Name">
+											</div>
+											<div class="form-group">
+												<label for="des">Your Portfolio Description</label>
+												<input name = "description" type="text" class="form-control" id="des" placeholder="Description">
+											</div>
+
+											<%}%>
+											<div class="form-group">
+												<label for="InputTitle">Title</label>
+												<input name = "title" type="text" class="form-control" id="InputTitle" placeholder="Title">
+											</div>
+											<div class="form-group">
+												<label for="im">ScreenShot</label>
+												<input id ="im" type="file" class="form-control" name="screen" accept="image/*"><br>
+											</div>
+											<button type="submit" class="btn btn-default">Upload</button>
+										</form>
+									</div>
+								</div>
+								<%}%>
+
+
+							</body>
+							</html>

@@ -1,0 +1,67 @@
+</html>
+<html>
+<head>
+	<title></title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <style>
+                .alert {
+                    padding: 20px;
+                    background-color: #f44336;
+                    color: white;
+                    opacity: 1;
+                    transition: opacity 0.6s;
+                    margin-bottom: 15px;
+                }
+
+                .alert.warning {background-color: #ff9800;}
+
+                .closebtn {
+                    margin-left: 15px;
+                    color: white;
+                    font-weight: bold;
+                    float: right;
+                    font-size: 22px;
+                    line-height: 20px;
+                    cursor: pointer;
+                    transition: 0.3s;
+                }
+
+                .closebtn:hover {
+                    color: black;
+                }
+</style>
+</head>
+<body>
+
+        <%if(err != 5){%>
+       <div class="alert">
+       <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+       <strong>Error!</strong> <%= err%>
+       </div>
+       <%}%>
+        <h1>signup</h1>
+        <div class="container">
+        <form autocomplete="off" class="form" enctype="multipart/form-data" method="POST" action="/newProfile">
+        <label for="u">Username</label>
+        <%if(err != 5){%>
+        <input type="text" id="u" class="form-control" name="username" value= <%=un%>  ><br>
+        <%}else{%>
+        <input type="text" id="u" class="form-control" name="username"><br>
+        <%}%>
+        <label for="p">Password</label>
+        <input type="text" id="p" class="form-control" name="password"><br>
+        <label for="p1">Confirm Password</label>
+        <input type="text" id="p1" class="form-control" name="password1"><br>
+        <label for="im">Profile Picture</label>
+        <input id ="im" type="file" class="form-control" name="pic" accept="image/*"><br>
+        <label for="student">Student</label>
+        <input type="radio" id="student" name="type" value="student" class="radio" checked>
+        <label for="client">Client</label>
+        <input type="radio" id="client" name="type" value="client" class="radio"><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class ="btn-primary form-control" type="submit" value="signup">
+        </form>
+    </div>
+</body>
+</html>
